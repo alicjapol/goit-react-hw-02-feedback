@@ -10,9 +10,7 @@ export default class Statistics extends Component {
     positivePercentage: PropTypes.number,
   };
 
-  
   render() {
-   
     return (
       <div>
         <h3>Statistics</h3>

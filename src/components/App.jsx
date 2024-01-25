@@ -26,8 +26,8 @@ export class App extends Component {
     return positivePercentage;
   }
 
-  onLeaveFeedback = (feedback) => {
-    this.setState((prevState) => ({
+  onLeaveFeedback = feedback => {
+    this.setState(prevState => ({
       [feedback]: prevState[feedback] + 1,
     }));
   };
@@ -56,4 +56,3 @@ export class App extends Component {
     );
   }
 }
-
