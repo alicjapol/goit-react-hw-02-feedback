@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SectionTitle from './SectionTitle/SectionTitle';
-import Feedback from './Feedback/Feedback';
 import Statistics from './Statistics/Statistics';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
