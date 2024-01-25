@@ -1,56 +1,27 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class Statistics extends React.Component {
-    static propTypes = {
-      good: this.propTypes.string,
-      neutral: this.propTypes.string,
-      bad: this.propTypes.string,
-    };
+export default class Statistics extends Component {
+  static propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+    total: PropTypes.number,
+    positivePercentage: PropTypes.number,
+  };
+
   
-    state = {
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    };
-  
-    onLeaveFeedback = feedback => {
-      this.setState(prevState => ({
-        [feedback]: prevState[feedback] + 1,
-      }));
-    };
-  
-    countTotalFeedback() {
-      const { good, neutral, bad } = this.state;
-      return good + neutral + bad;
-    }
-  
-    countPositiveFeedbackPercentage() {
-      // const { good, neutral, bad } = this.state;
-      // const total = this.countTotalFeedback();
-      // const positivePercentage = this.countPositiveFeedbackPercentage();
-      const total = this.countTotalFeedback();
-      const { good } = this.state;
-      const positivePercentage =
-        total === 0 ? 0 : Math.round((good / total) * 100);
-  
-      return positivePercentage;
-    }
-  
-    render() {
-      const { good, bad, neutral } = this.state;
-      const total = this.countTotalFeedback();
-      const positivePercentage = this.countPositiveFeedbackPercentage();
-  
-      return (
-        <div>
-          <h3>Statistics</h3>
-          <p>Good: {good}</p>
-          <p>Neutral: {neutral}</p>
-          <p>Bad: {bad}</p>
-          <p>Total Opinions: {total}</p>
-          <p>Positive Feedback Percentage: {positivePercentage}%</p>
-        </div>
-      );
-    }
+  render() {
+   
+    return (
+      <div>
+        <h3>Statistics</h3>
+        <p>Good: {this.props.good}</p>
+        <p>Neutral: {this.props.neutral}</p>
+        <p>Bad: {this.props.bad}</p>
+        <p>Total Opinions: {this.props.total}</p>
+        <p>Positive Feedback Percentage: {this.props.positivePercentage}%</p>
+      </div>
+    );
   }
+}

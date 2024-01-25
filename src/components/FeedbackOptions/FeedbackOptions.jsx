@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export default class FeedbackOptions {
-    static propTypes = {
-        options: PropTypes.string.isRequired,
-        onLeaveFeedback: PropTypes.func.isRequired,
-    }
-render(){
+export default class FeedbackOptions extends Component {
+  static propTypes = {
+    options: PropTypes.array,
+    onLeaveFeedback: PropTypes.func,
+  };
+
+  render() {
     const { options, onLeaveFeedback } = this.props;
-    onLeaveFeedback = feedback => {
-        this.setState(prevState => ({
-          [feedback]: prevState[feedback] + 1,
-        }));
-      };
-return(
-<div>
-        <h2>Please leave feedback</h2>
-        <button onClick={this.onLeaveFeedback('good')}>{options}</button>
-        <button onClick={this.onLeaveFeedback('neutral')}>{options}</button>
-        <button onClick={this.onLeaveFeedback('bad')}>{options}</button>
+    return (
+      <div>
+        {options.map(option => {
+          return (
+            <button key={option} onClick={() => onLeaveFeedback(option)}>
+              {option}
+            </button>
+          );
+        })}
       </div>
-)
-}
+    );
+  }
 }
